@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "796621291344",
+    "firebase_url": "https://tutuland-flutter-sandbox.firebaseio.com",
+    "project_id": "tutuland-flutter-sandbox",
+    "storage_bucket": "tutuland-flutter-sandbox.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796621291344:android:398d8fde063ee802",
+        "android_client_info": {
+          "package_name": "com.tutuland.fluttersandbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "796621291344-fd0of3uriec4on73aqq54g43rksptibs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tutuland.fluttersandbox",
+            "certificate_hash": "7b0fd32970dd518be45868a1823f77e006f63c2e"
+          }
+        },
+        {
+          "client_id": "796621291344-1kpe6n9m5vqihmtpo1bnau3774ekqrlq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUfC7PYIRSgAeUpw7OoWp0xqY3qe3p4oo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "796621291344-1kpe6n9m5vqihmtpo1bnau3774ekqrlq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "796621291344-4clrptedrf4dgdhhgvt3dnfui2knvrai.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tutuland.flutterSandbox"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
