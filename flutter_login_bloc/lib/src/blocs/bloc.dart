@@ -1,27 +1,31 @@
 import 'dart:async';
 
+import 'package:rxdart/rxdart.dart';
+
 import '../mixins/validation_mixins.dart';
 
 class Bloc with ValidationMixin {
-  final _email = StreamController<String>.broadcast();
-  final _password = StreamController<String>.broadcast();
-  final _buttonPressed = StreamController<bool>.broadcast();
+  final _email = BehaviorSubject<String>();
+  final _password = BehaviorSubject<String>();
 
-  Stream<String> get email => _email.stream.asBroadcastStream().transform(emailValidator);
+  Stream<String> get email => _email.stream.transform(emailValidator);
 
-  Stream<String> get password => _password.stream.asBroadcastStream().transform(passwordValidator);
+  Stream<String> get password => _password.stream.transform(passwordValidator);
 
-  Stream<bool> get buttonPressed => _buttonPressed.stream.asBroadcastStream();
+  Stream<bool> get enableButton => CombineLatestStream.combine2(email, password, (e, p) => true).asBroadcastStream();
 
   Function(String) get changeEmail => _email.sink.add;
 
   Function(String) get changePassword => _password.sink.add;
 
-  Function(bool) get pressButton => _buttonPressed.sink.add;
+  void submit() {
+    final validEmail = _email.value;
+    final validPassword = _password.value;
+    print("submitButtonPressed! email = $validEmail and password = $validPassword");
+  }
 
   void dispose() {
     _email.close();
     _password.close();
-    _buttonPressed.close();
   }
 }

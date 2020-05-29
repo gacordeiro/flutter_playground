@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../blocs/provider.dart';
 import '../widgets/email_input.dart';
 import '../widgets/password_input.dart';
+import '../widgets/submit_button.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -13,23 +13,8 @@ class LoginScreen extends StatelessWidget {
             EmailInput(),
             PasswordInput(),
             Container(margin: EdgeInsets.only(bottom: 16)),
-            RaisedButton(
-              child: Text("Submit!"),
-              textColor: Colors.white,
-              color: Colors.blue,
-              onPressed: () {
-                Provider.of(context).pressButton(true);
-              },
-            ),
+            SubmitButton(),
           ],
         ),
       );
-
-  void passwordButtonPressed() {
-    print("passwordButtonPressed"); // TODO
-  }
-
-  void submitButtonPressed() {
-    print("submitButtonPressed"); // TODO
-  }
 }
