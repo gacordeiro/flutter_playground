@@ -25,5 +25,3 @@ class Bloc with ValidationMixin {
     _buttonPressed.close();
   }
 }
-
-final bloc = Bloc();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../blocs/Bloc.dart';
+import '../blocs/provider.dart';
 import '../widgets/email_input.dart';
 import '../widgets/password_input.dart';
 
@@ -18,7 +18,7 @@ class LoginScreen extends StatelessWidget {
               textColor: Colors.white,
               color: Colors.blue,
               onPressed: () {
-                bloc.pressButton(true);
+                Provider.of(context).pressButton(true);
               },
             ),
           ],

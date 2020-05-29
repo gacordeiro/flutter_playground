@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../blocs/Bloc.dart';
+import '../blocs/provider.dart';
 
 class PasswordInput extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class PasswordInputState extends State<PasswordInput> {
   @override
   Widget build(BuildContext context) => Row(
         children: <Widget>[
-          Expanded(child: _passwordField()),
+          Expanded(child: _passwordField(context)),
           IconButton(
             icon: Icon(showPassword ? Icons.visibility_off : Icons.visibility),
             color: Colors.grey,
@@ -22,11 +22,11 @@ class PasswordInputState extends State<PasswordInput> {
         ],
       );
 
-  StreamBuilder<String> _passwordField() => StreamBuilder(
-        stream: bloc.password,
+  StreamBuilder<String> _passwordField(BuildContext context) => StreamBuilder(
+        stream: Provider.of(context).password,
         builder: (BuildContext context, AsyncSnapshot<String> snapshot) => TextField(
           obscureText: !showPassword,
-          onChanged: bloc.changePassword,
+          onChanged: Provider.of(context).changePassword,
           decoration: InputDecoration(
             labelText: "Password",
             hintText: "Enter your password",
