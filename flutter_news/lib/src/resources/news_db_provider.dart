@@ -45,10 +45,14 @@ class NewsDbProvider implements Source, Cache {
   }
 
   @override
-  Future<List<int>> fetchTopIds() => Future.value(<int>[]);
+  Future<List<int>> fetchTopIds() {
+    print("NewsDbProvider fetchTopIds()");
+    return Future.value(<int>[]);
+  }
 
   @override
   Future<ItemModel> fetchItem(int id) async {
+    print("NewsDbProvider fetchItem($id)");
     final maps = await db.query(
       "Items",
       columns: null,
@@ -59,5 +63,12 @@ class NewsDbProvider implements Source, Cache {
   }
 
   @override
-  Future<int> addItem(ItemModel item) => db.insert("Items", item.mapForDb());
+  Future<int> addItem(ItemModel item) {
+    print("NewsDbProvider addItem(${item.id})");
+    db.insert(
+      "Items",
+      item.mapForDb(),
+      conflictAlgorithm: ConflictAlgorithm.ignore,
+    );
+  }
 }
