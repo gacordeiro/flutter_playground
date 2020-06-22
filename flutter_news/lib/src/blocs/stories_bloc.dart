@@ -35,6 +35,8 @@ class StoriesBloc {
     );
   }
 
+  clearCache() => _repository.clearCache();
+
   void dispose() {
     _topIds.close();
     _itemsFetcher.close();

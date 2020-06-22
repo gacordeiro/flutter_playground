@@ -18,12 +18,18 @@ class NewsList extends StatelessWidget {
         builder: (context, AsyncSnapshot<List<int>> snapshot) {
           return !snapshot.hasData
               ? Center(child: CircularProgressIndicator())
-              : ListView.builder(
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (context, int index) {
-                    final id = snapshot.data[index];
-                    bloc.fetchItem(id);
-                    return NewsListTile(id);
+              : RefreshIndicator(
+                  child: ListView.builder(
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, int index) {
+                      final id = snapshot.data[index];
+                      bloc.fetchItem(id);
+                      return NewsListTile(id);
+                    },
+                  ),
+                  onRefresh: () async {
+                    await bloc.clearCache();
+                    await bloc.fetchTopIds();
                   },
                 );
         },

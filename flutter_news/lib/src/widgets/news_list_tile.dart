@@ -29,6 +29,7 @@ class NewsListTile extends StatelessWidget {
             Text(snapshot.data.title),
             Text("${snapshot.data.score} votes"),
             Text("${snapshot.data.descendants}"),
+            () => Navigator.pushNamed(context, '/${snapshot.data.id}'),
           );
   }
 }
@@ -37,18 +38,21 @@ class TileContainer extends StatelessWidget {
   final Widget title;
   final Widget subtitle;
   final Widget count;
+  final Function onTap;
 
-  TileContainer(this.title, this.subtitle, this.count);
+  TileContainer(this.title, this.subtitle, this.count, this.onTap);
 
   TileContainer.skeleton()
       : title = Row(children: <Widget>[Skeleton.title()]),
         subtitle = Row(children: <Widget>[Skeleton.subtitle()]),
-        count = Skeleton.count();
+        count = Skeleton.count(),
+        onTap = null;
 
   @override
   Widget build(BuildContext context) => Column(
         children: <Widget>[
           ListTile(
+            onTap: onTap,
             title: title,
             subtitle: subtitle,
             trailing: Column(
