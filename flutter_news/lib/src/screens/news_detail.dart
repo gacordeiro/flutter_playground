@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news/src/blocs/comments_bloc.dart';
 import 'package:news/src/models/item_model.dart';
+import 'package:news/src/widgets/comment.dart';
 import 'package:news/src/widgets/title_container.dart';
 
 class NewsDetail extends StatelessWidget {
@@ -23,31 +24,21 @@ class NewsDetail extends StatelessWidget {
     );
   }
 
-  Widget buildBody(CommentsBloc bloc) {
-    return StreamBuilder(
-      stream: bloc.itemWithComments,
-      builder: futureDetailsBuilder,
-    );
-  }
-
   Widget futureDetailsBuilder(context, AsyncSnapshot<Map<int, Future<ItemModel>>> cacheSnapshot) {
     return !cacheSnapshot.hasData
-        ? skeleton()
+        ? detailsSkeleton()
         : FutureBuilder(
             future: cacheSnapshot.data[itemId],
             builder: (context, AsyncSnapshot<ItemModel> itemSnapshot) {
-              return !itemSnapshot.hasData ? skeleton() : buildDetails(itemSnapshot.data, cacheSnapshot.data);
+              return !itemSnapshot.hasData ? detailsSkeleton() : buildDetails(itemSnapshot.data, cacheSnapshot.data);
             },
           );
   }
 
   Widget buildDetails(ItemModel item, Map<int, Future<ItemModel>> cache) {
-    return ListView(
-      children: <Widget>[
-        buildTitle(item),
-        comments(),
-      ],
-    );
+    List<Widget> detailsList = <Widget>[buildTitle(item), commentsDivider()];
+    item.kids.forEach((kidId) => detailsList.add(Comment(0, itemId: kidId, cache: cache)));
+    return ListView(children: detailsList);
   }
 
   Widget buildTitle(ItemModel item) {
@@ -62,22 +53,22 @@ class NewsDetail extends StatelessWidget {
     );
   }
 
-  Widget comments({bool isLoading = false}) => Container(
-        margin: EdgeInsets.all(16),
+  Widget commentsDivider({bool isLoading = false}) => Container(
+        margin: EdgeInsets.only(left: 16, bottom: 4),
         child: Text(
-          "Comments",
+          "Comments:",
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 18,
             fontWeight: FontWeight.bold,
             color: isLoading ? Colors.grey[300] : Colors.black,
           ),
         ),
       );
 
-  Widget skeleton() => ListView(
+  Widget detailsSkeleton() => ListView(
         children: <Widget>[
           Container(margin: EdgeInsets.all(16), child: Skeleton.title()),
-          comments(isLoading: true),
+          commentsDivider(isLoading: true),
           TileContainer.skeleton(),
           Container(margin: EdgeInsets.only(left: 24), child: TileContainer.skeleton()),
           Container(margin: EdgeInsets.only(left: 48, bottom: 24), child: TileContainer.skeleton()),

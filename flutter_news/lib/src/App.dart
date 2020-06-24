@@ -20,6 +20,8 @@ class App extends StatelessWidget {
 
   Widget routeFor(BuildContext context, RouteSettings settings) {
     if (settings.name == "/") {
+      final bloc = StoriesProvider.of(context);
+      bloc.fetchTopIds();
       return NewsList();
     } else {
       final id = int.parse(settings.name.substring(1));
