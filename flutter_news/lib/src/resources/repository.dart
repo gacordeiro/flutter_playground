@@ -1,14 +1,12 @@
 import 'package:news/src/models/item_model.dart';
 
 import 'news_api_provider.dart';
-import 'news_db_provider.dart';
 
-final NewsDbProvider _dbProvider = NewsDbProvider();
 final NewsApiProvider _apiProvider = NewsApiProvider();
 
 class Repository {
-  List<Source> sources = <Source>[_dbProvider, _apiProvider];
-  List<Cache> caches = <Cache>[_dbProvider];
+  List<Source> sources = <Source>[_apiProvider];
+  List<Cache> caches = <Cache>[];
 
   Future<List<int>> fetchTopIds() async {
     List<int> ids;
