@@ -9,6 +9,7 @@ Widget idComponent({
   String emailHint = 'Enter your email',
   String passwordHint = 'Enter your password',
   String actionLabel = 'Click',
+  Color color = Colors.lightBlueAccent,
 }) {
   return Scaffold(
     backgroundColor: Colors.white,
@@ -22,19 +23,18 @@ Widget idComponent({
           SizedBox(height: 48),
           TextField(
             onChanged: onEmailChanged,
-            decoration: _inputDecoration(emailHint),
+            decoration: _inputDecoration(emailHint, color),
           ),
           SizedBox(height: 8),
           TextField(
             onChanged: onPasswordChanged,
-            decoration: _inputDecoration(passwordHint),
+            decoration: _inputDecoration(passwordHint, color),
           ),
           SizedBox(height: 24),
           roundedButton(
-            title: 'Register',
-            onPressed: () {
-              print('Register clicked'); //TODO
-            },
+            title: actionLabel,
+            color: color,
+            onPressed: onActionClicked,
           )
         ],
       ),
@@ -42,16 +42,16 @@ Widget idComponent({
   );
 }
 
-InputDecoration _inputDecoration(String hintText) => InputDecoration(
-      hintText: hintText,
+InputDecoration _inputDecoration(String hint, Color color) => InputDecoration(
+      hintText: hint,
       contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       border: OutlineInputBorder(borderRadius: kBorderRadius),
       enabledBorder: OutlineInputBorder(
         borderRadius: kBorderRadius,
-        borderSide: BorderSide(color: Colors.blueAccent, width: 1),
+        borderSide: BorderSide(color: color, width: 1),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: kBorderRadius,
-        borderSide: BorderSide(color: Colors.blueAccent, width: 2),
+        borderSide: BorderSide(color: color, width: 2),
       ),
     );

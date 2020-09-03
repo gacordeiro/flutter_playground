@@ -10,7 +10,7 @@ Widget roundedButton({
     padding: mVerticalDefault,
     child: Material(
       elevation: 4,
-      color: Colors.lightBlueAccent,
+      color: color,
       borderRadius: kBorderRadius,
       child: MaterialButton(
         onPressed: onPressed,

@@ -16,6 +16,7 @@ class RegistrationScreenState extends State<RegistrationScreen> {
       onPasswordChanged: (password) => print('onPasswordChanged: $password'),
       onActionClicked: () => print('onActionClicked'),
       actionLabel: 'Register',
+      color: Colors.blueAccent,
     );
   }
 }

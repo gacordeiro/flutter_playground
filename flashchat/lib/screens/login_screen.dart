@@ -16,6 +16,7 @@ class LoginScreenState extends State<LoginScreen> {
       onPasswordChanged: (password) => print('onPasswordChanged: $password'),
       onActionClicked: () => print('onActionClicked'),
       actionLabel: 'Log In',
+      color: Colors.lightBlueAccent,
     );
   }
 }

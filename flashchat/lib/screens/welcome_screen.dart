@@ -1,5 +1,7 @@
 import 'package:flashchat/components/rounded_button.dart';
 import 'package:flashchat/constants.dart';
+import 'package:flashchat/screens/login_screen.dart';
+import 'package:flashchat/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -22,8 +24,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           children: [
             _buildHeader(),
             SizedBox(height: 48),
-            _buildLoginButton(),
-            _buildRegisterButton(),
+            _buildLoginButton(context),
+            _buildRegisterButton(context),
           ],
         ),
       ),
@@ -43,17 +45,21 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         ],
       );
 
-  Widget _buildLoginButton() => roundedButton(
+  Widget _buildLoginButton(BuildContext context) => roundedButton(
         title: 'Log In',
+        color: Colors.lightBlueAccent,
         onPressed: () {
-          print('Log In clicked'); //TODO
+          print('Log In clicked');
+          Navigator.pushNamed(context, LoginScreen.id);
         },
       );
 
-  Widget _buildRegisterButton() => roundedButton(
+  Widget _buildRegisterButton(BuildContext context) => roundedButton(
         title: 'Register',
+        color: Colors.blueAccent,
         onPressed: () {
-          print('Register clicked'); //TODO
+          print('Register clicked');
+          Navigator.pushNamed(context, RegistrationScreen.id);
         },
       );
 }
