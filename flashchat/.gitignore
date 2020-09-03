@@ -1,0 +1,69 @@
+.DS_Store
+.dart_tool/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+
+# Exceptions to above rules.
+!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+*.swp
+profile
+
+DerivedData/
+
+.generated/
+
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+
+!default.pbxuser
+!default.mode1v3
+!default.mode2v3
+!default.perspectivev3
+
+xcuserdata
+
+*.moved-aside
+
+*.pyc
+*sync/
+Icon?
+.tags*
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Generated Dart files
+**/*.g.dart
+
+# Web related
+lib/generated_plugin_registrant.dart
+
+# VS Code
+.vscode/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.gradle
+/local.properties
+/.idea/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
