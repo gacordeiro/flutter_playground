@@ -1,7 +1,10 @@
+import 'package:flashchat/components/rounded_button.dart';
+import 'package:flashchat/constants.dart';
 import 'package:flutter/material.dart';
-import '../constants.dart';
 
 class WelcomeScreen extends StatefulWidget {
+  static const id = 'welcome_screen';
+
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
@@ -40,32 +43,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         ],
       );
 
-  Widget _buildLoginButton() => _buildButton(
-        text: 'Log In',
-        click: () {
-          print('Log In clicked');
+  Widget _buildLoginButton() => roundedButton(
+        title: 'Log In',
+        onPressed: () {
+          print('Log In clicked'); //TODO
         },
       );
 
-  Widget _buildRegisterButton() => _buildButton(
-        text: 'Register',
-        click: () {
-          print('Register clicked');
+  Widget _buildRegisterButton() => roundedButton(
+        title: 'Register',
+        onPressed: () {
+          print('Register clicked'); //TODO
         },
-      );
-
-  Widget _buildButton({final String text, final VoidCallback click}) => Padding(
-        padding: mVerticalDefault,
-        child: Material(
-          elevation: 4,
-          color: Colors.lightBlueAccent,
-          borderRadius: BorderRadius.circular(30),
-          child: MaterialButton(
-            onPressed: click,
-            minWidth: 200,
-            height: 40,
-            child: Text(text),
-          ),
-        ),
       );
 }

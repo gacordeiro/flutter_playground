@@ -18,6 +18,8 @@ const kMessageContainerDecoration = BoxDecoration(
   ),
 );
 
+BorderRadius kBorderRadius = BorderRadius.circular(32);
+
 const mHorizontalCard = EdgeInsets.symmetric(horizontal: 8);
 const mHorizontalDefault = EdgeInsets.symmetric(horizontal: 16);
 const mHorizontalLarge = EdgeInsets.symmetric(horizontal: 24);
