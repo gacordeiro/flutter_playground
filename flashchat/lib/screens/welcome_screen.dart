@@ -34,9 +34,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   Widget _buildHeader() => Row(
         children: [
-          Container(
-            child: Image.asset('images/logo.png'),
-            height: 60,
+          Hero(
+            tag: 'logo',
+            child: Container(
+              child: Image.asset('images/logo.png'),
+              height: 60,
+            ),
           ),
           Text(
             'Flash Chat',

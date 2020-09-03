@@ -19,7 +19,7 @@ Widget idComponent({
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Container(height: 200, child: Image.asset('images/logo.png')),
+          _buildHeader(),
           SizedBox(height: 48),
           TextField(
             onChanged: onEmailChanged,
@@ -41,6 +41,11 @@ Widget idComponent({
     ),
   );
 }
+
+Widget _buildHeader() => Hero(
+      tag: 'logo',
+      child: Container(height: 200, child: Image.asset('images/logo.png')),
+    );
 
 InputDecoration _inputDecoration(String hint, Color color) => InputDecoration(
       hintText: hint,
