@@ -17,6 +17,7 @@ class RegistrationScreenState extends State<RegistrationScreen> {
       onActionClicked: () => print('onActionClicked'),
       actionLabel: 'Register',
       color: Colors.blueAccent,
+      heroButtonTag: RegistrationScreen.id,
     );
   }
 }

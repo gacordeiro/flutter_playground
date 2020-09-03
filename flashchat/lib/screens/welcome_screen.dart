@@ -48,21 +48,27 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         ],
       );
 
-  Widget _buildLoginButton(BuildContext context) => roundedButton(
-        title: 'Log In',
-        color: Colors.lightBlueAccent,
-        onPressed: () {
-          print('Log In clicked');
-          Navigator.pushNamed(context, LoginScreen.id);
-        },
-      );
+  Widget _buildLoginButton(BuildContext context) => Hero(
+    tag: LoginScreen.id,
+    child: roundedButton(
+          title: 'Log In',
+          color: Colors.lightBlueAccent,
+          onPressed: () {
+            print('Log In clicked');
+            Navigator.pushNamed(context, LoginScreen.id);
+          },
+        ),
+  );
 
-  Widget _buildRegisterButton(BuildContext context) => roundedButton(
-        title: 'Register',
-        color: Colors.blueAccent,
-        onPressed: () {
-          print('Register clicked');
-          Navigator.pushNamed(context, RegistrationScreen.id);
-        },
-      );
+  Widget _buildRegisterButton(BuildContext context) => Hero(
+    tag: RegistrationScreen.id,
+    child: roundedButton(
+          title: 'Register',
+          color: Colors.blueAccent,
+          onPressed: () {
+            print('Register clicked');
+            Navigator.pushNamed(context, RegistrationScreen.id);
+          },
+        ),
+  );
 }

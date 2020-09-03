@@ -10,6 +10,7 @@ Widget idComponent({
   String passwordHint = 'Enter your password',
   String actionLabel = 'Click',
   Color color = Colors.lightBlueAccent,
+  String heroButtonTag = 'hero',
 }) {
   return Scaffold(
     backgroundColor: Colors.white,
@@ -31,10 +32,13 @@ Widget idComponent({
             decoration: _inputDecoration(passwordHint, color),
           ),
           SizedBox(height: 24),
-          roundedButton(
-            title: actionLabel,
-            color: color,
-            onPressed: onActionClicked,
+          Hero(
+            tag: heroButtonTag,
+            child: roundedButton(
+              title: actionLabel,
+              color: color,
+              onPressed: onActionClicked,
+            ),
           )
         ],
       ),

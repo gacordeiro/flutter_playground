@@ -17,6 +17,7 @@ class LoginScreenState extends State<LoginScreen> {
       onActionClicked: () => print('onActionClicked'),
       actionLabel: 'Log In',
       color: Colors.lightBlueAccent,
+      heroButtonTag: LoginScreen.id,
     );
   }
 }
