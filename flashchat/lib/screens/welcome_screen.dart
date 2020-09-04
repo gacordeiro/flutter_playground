@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flashchat/components/rounded_button.dart';
 import 'package:flashchat/constants.dart';
 import 'package:flashchat/screens/login_screen.dart';
@@ -11,11 +12,36 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+  Animation _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: Duration(milliseconds: 2000),
+      vsync: this,
+    );
+    _animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
+        .animate(_controller);
+    _controller.forward();
+    _controller.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: _animation.value,
       body: Padding(
         padding: mHorizontalLarge,
         child: Column(
@@ -41,16 +67,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               height: 60,
             ),
           ),
-          Text(
-            'Flash Chat',
-            style: TextStyle(fontSize: 45, fontWeight: FontWeight.w900),
+          TypewriterAnimatedTextKit(
+            text: ['Flash Chat'],
+            textStyle: TextStyle(fontSize: 45, fontWeight: FontWeight.w900),
+            speed: const Duration(milliseconds: 250),
+            totalRepeatCount: 1,
           ),
         ],
       );
 
   Widget _buildLoginButton(BuildContext context) => Hero(
-    tag: LoginScreen.id,
-    child: roundedButton(
+        tag: LoginScreen.id,
+        child: roundedButton(
           title: 'Log In',
           color: Colors.lightBlueAccent,
           onPressed: () {
@@ -58,11 +86,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             Navigator.pushNamed(context, LoginScreen.id);
           },
         ),
-  );
+      );
 
   Widget _buildRegisterButton(BuildContext context) => Hero(
-    tag: RegistrationScreen.id,
-    child: roundedButton(
+        tag: RegistrationScreen.id,
+        child: roundedButton(
           title: 'Register',
           color: Colors.blueAccent,
           onPressed: () {
@@ -70,5 +98,5 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             Navigator.pushNamed(context, RegistrationScreen.id);
           },
         ),
-  );
+      );
 }
