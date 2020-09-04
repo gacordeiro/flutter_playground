@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "241555486786",
+    "firebase_url": "https://flutter-playground-flashchat.firebaseio.com",
+    "project_id": "flutter-playground-flashchat",
+    "storage_bucket": "flutter-playground-flashchat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:241555486786:android:4a6f43933cd4b4f1f055db",
+        "android_client_info": {
+          "package_name": "com.tutuland.flutter.flashchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "241555486786-3i0k7lnjj3mkr7rgi652aknab6saol4g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIuP2k92b_vDc8tdIL1hBn9gqiDwXDP_Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "241555486786-3i0k7lnjj3mkr7rgi652aknab6saol4g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
