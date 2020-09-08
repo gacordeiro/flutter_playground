@@ -13,7 +13,7 @@ final Map<String, WidgetBuilder> appRoutes = {
 };
 
 extension AppRouter on BuildContext {
-  void startChatScreen() {
+  void navigateToChat() {
     Navigator.pushNamedAndRemoveUntil(this, ChatScreen.id, (r) => false);
   }
 
@@ -23,5 +23,9 @@ extension AppRouter on BuildContext {
 
   void navigateToRegistration() {
     Navigator.pushNamed(this, RegistrationScreen.id);
+  }
+
+  void navigateToWelcome() {
+    Navigator.pushNamedAndRemoveUntil(this, WelcomeScreen.id, (r) => false);
   }
 }

@@ -18,7 +18,7 @@ class LoginScreen extends StatelessWidget {
             email: email,
             password: password,
           );
-          if (existingUser != null) context.startChatScreen();
+          if (existingUser != null) context.navigateToChat();
         } catch (e) {
           print(e);
         }

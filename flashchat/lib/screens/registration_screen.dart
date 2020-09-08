@@ -18,7 +18,7 @@ class RegistrationScreen extends StatelessWidget {
             email: email,
             password: password,
           );
-          if (newUser != null) context.startChatScreen();
+          if (newUser != null) context.navigateToChat();
         } catch (e) {
           print(e);
         }

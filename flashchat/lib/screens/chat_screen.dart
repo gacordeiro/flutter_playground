@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuth;
 import 'package:firebase_auth/firebase_auth.dart' as FBAuth;
+import 'package:flashchat/app_router.dart';
 import 'package:flashchat/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -17,26 +18,18 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    getCurrentUser();
-  }
-
-  void getCurrentUser() async {
-    try {
-      final user = _auth.currentUser;
-      if (user != null) loggedInUser = user;
-      print('loggedInUser: ${loggedInUser?.email ?? "<null>"}');
-    } catch (e) {
-      print(e);
-    }
+    _getCurrentUser();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: null, //TODO check if needed
         actions: [
-          IconButton(icon: Icon(Icons.close), onPressed: _closeClicked),
+          IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () => _closeClicked(context),
+          ),
         ],
         title: Text('⚡️Chat'),
         backgroundColor: Colors.lightBlueAccent,
@@ -74,8 +67,19 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
       );
 
-  void _closeClicked() {
-    print('_closeClicked'); //TODO
+  void _getCurrentUser() async {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) loggedInUser = user;
+      print('loggedInUser: ${loggedInUser?.email ?? "<null>"}');
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void _closeClicked(BuildContext context) {
+    _auth.signOut();
+    context.navigateToWelcome();
   }
 
   void _sendClicked() {
