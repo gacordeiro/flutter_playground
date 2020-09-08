@@ -1,4 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flashchat/app_router.dart';
 import 'package:flashchat/components/rounded_button.dart';
 import 'package:flashchat/constants.dart';
 import 'package:flashchat/screens/login_screen.dart';
@@ -16,10 +18,16 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
   Animation _animation;
+  bool isInitialized = false;
 
   @override
   void initState() {
     super.initState();
+
+    Firebase.initializeApp().whenComplete(
+      () => setState(() => isInitialized = true),
+    );
+
     _controller = AnimationController(
       duration: Duration(milliseconds: 2000),
       vsync: this,
@@ -50,8 +58,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           children: [
             _buildHeader(),
             SizedBox(height: 48),
-            _buildLoginButton(context),
-            _buildRegisterButton(context),
+            if (isInitialized) _buildLoginButton(context),
+            if (isInitialized) _buildRegisterButton(context),
+            if (!isInitialized) Center(child: CircularProgressIndicator()),
           ],
         ),
       ),
@@ -83,7 +92,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           color: Colors.lightBlueAccent,
           onPressed: () {
             print('Log In clicked');
-            Navigator.pushNamed(context, LoginScreen.id);
+            context.navigateToLogin();
           },
         ),
       );
@@ -95,7 +104,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
           color: Colors.blueAccent,
           onPressed: () {
             print('Register clicked');
-            Navigator.pushNamed(context, RegistrationScreen.id);
+            context.navigateToRegistration();
           },
         ),
       );
