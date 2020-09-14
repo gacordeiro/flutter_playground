@@ -14,7 +14,7 @@ abstract class _ListController with Store {
   ].asObservable();
 
   @computed
-  int get totalChecked => listItems.where((item) => item.check ?? false).length;
+  int get totalChecked => filteredList.where((item) => item.check ?? false).length;
 
   @action
   void addItem(ItemModel model) {
@@ -24,5 +24,23 @@ abstract class _ListController with Store {
   @action
   void removeItem(ItemModel model) {
     listItems.removeWhere((item) => item.title == model.title);
+  }
+
+  @observable
+  String filter = '';
+
+  @action
+  void setFilter(String value) => filter = value;
+
+  @computed
+  List<ItemModel> get filteredList {
+    if (filter.isEmpty)
+      return listItems;
+    else
+      return listItems
+          .where(
+            (item) => item.title.toLowerCase().contains(filter.toLowerCase()),
+          )
+          .toList();
   }
 }

@@ -17,6 +17,7 @@ class _ListPageState extends State<ListPage> {
     return Scaffold(
       appBar: AppBar(
         title: TextField(
+          onChanged: controller.setFilter,
           decoration: InputDecoration(hintText: 'Search'),
         ),
         actions: [
@@ -28,9 +29,9 @@ class _ListPageState extends State<ListPage> {
       ),
       body: Observer(
         builder: (_) => ListView.builder(
-          itemCount: controller.listItems.length,
+          itemCount: controller.filteredList.length,
           itemBuilder: (_, index) {
-            final item = controller.listItems[index];
+            final item = controller.filteredList[index];
             return ItemWidget(item, () => controller.removeItem(item));
           },
         ),
