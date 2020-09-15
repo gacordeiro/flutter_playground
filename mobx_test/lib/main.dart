@@ -3,6 +3,7 @@ import 'package:mobx_test/controllers/client_controller.dart';
 import 'package:mobx_test/screens/client_page.dart';
 import 'package:mobx_test/screens/counter_page.dart';
 import 'package:mobx_test/screens/list_page.dart';
+import 'package:mobx_test/screens/reaction_counter_page.dart';
 import 'package:mobx_test/screens/stream_list_page.dart';
 import 'package:provider/provider.dart';
 
@@ -26,10 +27,11 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        initialRoute: 'stream',
+        initialRoute: 'reaction',
         routes: {
           'client': (_) => ClientPage(),
           'counter': (_) => CounterPage(),
+          'reaction': (_) => ReactionCounterPage(),
           'list': (_) => ListPage(),
           'stream': (_) => StreamListPage(),
         },
