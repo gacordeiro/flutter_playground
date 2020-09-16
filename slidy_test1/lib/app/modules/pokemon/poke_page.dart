@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:slidy_test1/app/pages/pokemon/poke_controller.dart';
+import 'package:slidy_test1/app/modules/pokemon/poke_controller.dart';
 
 class PokePage extends StatefulWidget {
   @override
@@ -14,7 +14,7 @@ class _State extends State<PokePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home')),
+      appBar: AppBar(title: Text('Poke!')),
       body: Observer(builder: (_) {
         if (controller.pokemons.error != null) {
           return Center(
@@ -38,6 +38,10 @@ class _State extends State<PokePage> {
           },
         );
       }),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.launch),
+        onPressed: () => Modular.to.pushNamed('/home'),
+      ),
     );
   }
 }

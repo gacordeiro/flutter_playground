@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:slidy_test1/app/shared/models/pokemon_model.dart';
-import 'package:slidy_test1/app/shared/repositories/poke_repository.dart';
+import 'package:slidy_test1/app/modules/pokemon/poke_model.dart';
+import 'package:slidy_test1/app/modules/pokemon/poke_repository.dart';
 
 part 'poke_controller.g.dart';
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:slidy_test1/app/pages/home/home_controller.dart';
+
+import 'home_controller.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -20,9 +22,15 @@ class _State extends State<HomePage> {
           decoration: InputDecoration(labelText: 'Um texto qualquer'),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => Modular.to.pushNamed('/other/${controller.text}'),
+      floatingActionButton: Observer(
+        builder: (_) => FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            if (controller.text.isNotEmpty) {
+              Modular.to.pushNamed('/home/other/${controller.text}');
+            }
+          },
+        ),
       ),
     );
   }
