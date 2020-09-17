@@ -18,15 +18,12 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     if (widget.shouldDelay)
       Future.delayed(const Duration(seconds: 2))
-          .then((value) => Modular.to.pushReplacementNamed('/home'));
+          .then((value) => Modular.to.pushReplacementNamed('/login'));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Center(child: CircularProgressIndicator()),
     );
   }

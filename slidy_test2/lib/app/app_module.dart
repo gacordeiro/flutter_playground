@@ -6,6 +6,8 @@ import 'package:slidy_test2/app/modules/home/home_module.dart';
 import 'package:slidy_test2/app/modules/login/login_module.dart';
 import 'package:slidy_test2/app/modules/pokemon/poke_module.dart';
 import 'package:slidy_test2/app/pages/splash/splash_page.dart';
+import 'package:slidy_test2/app/shared/auth/auth_controller.dart';
+import 'package:slidy_test2/app/shared/auth/auth_repository.dart';
 import 'package:slidy_test2/app/shared/utils/constants.dart';
 
 import 'app_controller.dart';
@@ -15,6 +17,8 @@ class AppModule extends MainModule {
   List<Bind> get binds => [
         $AppController,
         Bind((i) => Dio(BaseOptions(baseUrl: URL_BASE))),
+        Bind<AuthRepository>((i) => AuthRepositoryImpl()),
+        Bind((i) => AuthController()),
       ];
 
   @override

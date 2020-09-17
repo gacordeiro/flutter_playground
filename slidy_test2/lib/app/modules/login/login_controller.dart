@@ -1,5 +1,6 @@
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:slidy_test2/app/shared/auth/auth_controller.dart';
 
 part 'login_controller.g.dart';
 
@@ -7,11 +8,16 @@ part 'login_controller.g.dart';
 class LoginController = _LoginControllerBase with _$LoginController;
 
 abstract class _LoginControllerBase with Store {
+  AuthController _auth = Modular.get();
+
   @observable
-  int value = 0;
+  bool loading = false;
 
   @action
-  void increment() {
-    value++;
+  Future<void> login() async {
+    loading = true;
+    await _auth.login();
+    loading = false;
+    Modular.to.pushReplacementNamed('/home');
   }
 }

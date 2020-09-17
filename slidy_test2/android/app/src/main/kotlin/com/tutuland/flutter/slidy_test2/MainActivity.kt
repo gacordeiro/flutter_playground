@@ -1,4 +1,4 @@
-package com.example.slidy_test2
+package com.tutuland.flutter.slidy_test2
 
 import io.flutter.embedding.android.FlutterActivity
 

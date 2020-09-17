@@ -38,10 +38,6 @@ class _State extends State<PokePage> {
           },
         );
       }),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.launch),
-        onPressed: () => Modular.to.pushNamed('/home'),
-      ),
     );
   }
 }

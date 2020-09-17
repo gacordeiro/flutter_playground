@@ -17,12 +17,12 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
-## Slidy Scripts 
-vars: 
+## Slidy Scripts
+vars:
     clean: flutter clean
     get: flutter pub get
     runner: flutter pub run build_runner
-scripts: 
+scripts:
     mobx_build: $runner build
     mobx_watch: $clean & $get & $runner watch
     mobx_build_clean: $clean & $get & $runner build --delete-conflicting-outputs
@@ -33,6 +33,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  firebase_auth: ^0.18.0+1
+  firebase_core: ^0.5.0
   shared_preferences: ^0.5.10
   rxdart: ^0.24.1
   dio: ^3.0.10
