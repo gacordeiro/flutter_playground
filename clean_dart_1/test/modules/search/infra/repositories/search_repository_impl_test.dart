@@ -7,10 +7,10 @@ import 'package:mockito/mockito.dart';
 
 import '../../../../utils/test_extensions.dart';
 
-class SearchDataSourceMock extends Mock implements SearchDataSource {}
+class SearchDatasourceMock extends Mock implements SearchDatasource {}
 
 main() {
-  final source = SearchDataSourceMock();
+  final source = SearchDatasourceMock();
   final repository = SearchRepositoryImpl(source);
 
   test('successful getSearch should return a SearchResultModel list', () async {

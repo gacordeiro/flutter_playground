@@ -5,7 +5,7 @@ import 'package:clean_dart_1/modules/search/infra/datasources/search_datasource.
 import 'package:dartz/dartz.dart';
 
 class SearchRepositoryImpl implements SearchRepository {
-  final SearchDataSource source;
+  final SearchDatasource source;
 
   SearchRepositoryImpl(this.source);
 
