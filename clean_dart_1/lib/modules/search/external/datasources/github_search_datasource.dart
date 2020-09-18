@@ -12,6 +12,7 @@ class GithubSearchDatasource implements SearchDatasource {
   @override
   Future<List<SearchResultModel>> getSearch(String term) async {
     final request = "https://api.github.com/search/users?q=${term.normalized}";
+    print("getSearch: $request");
     final response = await dio.get(request);
     if (response.statusCode == 200) {
       return (response.data['items'] as List)

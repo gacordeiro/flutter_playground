@@ -9,17 +9,17 @@ class SearchResultModel extends SearchResult {
 
   factory SearchResultModel.fromMap(Map<String, dynamic> map) {
     return SearchResultModel(
-      title: map['title'],
-      content: map['content'],
-      img: map['img'],
+      title: map['login'] ?? "",
+      content: map['url'] ?? "",
+      img: map['avatar_url'] ?? "",
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'title': this.title,
-      'content': this.content,
-      'img': this.img,
+      'login': this.title,
+      'url': this.content,
+      'avatar_url': this.img,
     };
   }
 }
