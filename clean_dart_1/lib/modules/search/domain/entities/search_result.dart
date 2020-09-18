@@ -3,5 +3,5 @@ class SearchResult {
   final String content;
   final String img;
 
-  SearchResult({this.title, this.content, this.img});
+  const SearchResult({this.title, this.content, this.img});
 }
